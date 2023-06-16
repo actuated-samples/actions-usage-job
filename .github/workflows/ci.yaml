@@ -15,7 +15,7 @@ permissions:
 jobs:
   get-stats:
     name: connect
-    runs-on: actuated
+    runs-on: actuated-any-1cpu-2gb
     steps:
     - uses: alexellis/arkade-get@master
       with:
