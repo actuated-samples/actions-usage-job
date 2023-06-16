@@ -1,4 +1,4 @@
-name: connect
+name: get-stats
 
 on:
   push:
@@ -13,11 +13,11 @@ permissions:
   actions: read
 
 jobs:
-  connect:
+  get-stats:
     name: connect
     runs-on: actuated
     steps:
-    - uses: alexellis/get-arkade@master
+    - uses: alexellis/arkade-get@master
       with:
         actions-usage: latest
     - run: |
