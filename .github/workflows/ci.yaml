@@ -20,11 +20,13 @@ jobs:
         actions-usage: latest
     - name: Generate actions-usage report
       run: |
-       echo "```" >> $GITHUB_STEP_SUMMARY
+       echo "### Actions Usage report by [actuated.dev](https://actuated.dev)" >> SUMMARY
+       echo "\`\`\`" >> SUMMARY
        actions-usage \
         -org $GITHUB_REPOSITORY_OWNER \
         -days 1 \
         -by-repo \
         -punch-card \
-        -token ${{ secrets.GITHUB_TOKEN }}  2> /dev/null  >> $GITHUB_STEP_SUMMARY
-       echo "```" >> $GITHUB_STEP_SUMMARY
+        -token ${{ secrets.GITHUB_TOKEN }}  2> /dev/null  >> SUMMARY
+       echo "\`\`\`" >> SUMMARY
+       cat SUMMARY >> $GITHUB_STEP_SUMMARY
