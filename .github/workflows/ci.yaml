@@ -21,4 +21,4 @@ jobs:
       with:
         actions-usage: latest
     - run: |
-       actions-usage --org $GITHUB_REPOSITORY_OWNER --days 1 --by-repo -punch-card --token ${GITHUB_TOKEN}
+       actions-usage --org $GITHUB_REPOSITORY_OWNER --days 1 --by-repo -punch-card --token ${{ secrets.GITHUB_TOKEN }}
