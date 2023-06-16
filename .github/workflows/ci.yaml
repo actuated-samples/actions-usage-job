@@ -8,8 +8,6 @@ on:
   workflow_dispatch:
 
 permissions:
-  id-token: write
-  contents: read
   actions: read
 
 jobs:
@@ -20,7 +18,8 @@ jobs:
     - uses: alexellis/arkade-get@master
       with:
         actions-usage: latest
-    - run: |
+    - name: Generate actions-usage report
+      run: |
        actions-usage \
         -org $GITHUB_REPOSITORY_OWNER \
         -days 1 \
