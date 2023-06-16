@@ -18,6 +18,7 @@ jobs:
     - uses: alexellis/arkade-get@master
       with:
         actions-usage: latest
+        print-summaries: false
     - name: Generate actions-usage report
       run: |
        echo "### Actions Usage report by [actuated.dev](https://actuated.dev)" >> SUMMARY
