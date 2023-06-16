@@ -1,4 +1,4 @@
-name: get-stats
+name: actions-usage
 
 on:
   push:
@@ -13,12 +13,17 @@ permissions:
   actions: read
 
 jobs:
-  get-stats:
-    name: connect
+  actions-usage:
+    name: daily-stats
     runs-on: actuated-any-1cpu-2gb
     steps:
     - uses: alexellis/arkade-get@master
       with:
         actions-usage: latest
     - run: |
-       actions-usage --org $GITHUB_REPOSITORY_OWNER --days 1 --by-repo -punch-card --token ${{ secrets.GITHUB_TOKEN }}  2> /dev/null 
+       actions-usage \
+        -org $GITHUB_REPOSITORY_OWNER \
+        -days 1 \
+        -by-repo \
+        -punch-card \
+        -token ${{ secrets.GITHUB_TOKEN }}  2> /dev/null 
