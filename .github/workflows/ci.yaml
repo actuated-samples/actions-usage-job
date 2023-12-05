@@ -13,8 +13,20 @@ permissions:
 jobs:
   actions-usage:
     name: daily-stats
-    runs-on: actuated-any-1cpu-2gb
+    runs-on: actuated-arm64-1cpu-8gb
     steps:
+
+# vmmeter start
+    - uses: alexellis/arkade-get@master
+      with:
+        crane: latest
+        print-summary: false
+    - name: Install vmmeter
+      run: |
+        crane export --platform linux/arm64 ttl.sh/alexellis2/vmmeter:latest | sudo tar -xvf - -C /usr/local/bin
+    - uses: self-actuated/vmmeter-action@master
+# vmmeter end
+
     - uses: alexellis/arkade-get@master
       with:
         actions-usage: latest
